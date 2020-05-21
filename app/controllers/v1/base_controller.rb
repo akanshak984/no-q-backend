@@ -6,8 +6,8 @@ module V1
 
     attr_reader :current_user, :payload
 
-    def render_json(message:, data: {}, status_code: :ok)
-      render(json: { message: message, data: data }, status: status_code)
+    def render_json(message:, data: {}, status: :ok)
+      render(json: { message: message, data: data }, status: status)
     end
 
     def validate_jwt_token!
@@ -16,7 +16,10 @@ module V1
         @payload = JsonWebToken.decode(token)
         return token_invalid unless JsonWebToken.valid_payload(@payload)
       else
-        render_json(message: I18n.t('session.invalid'), status_code: :unauthorized)
+        render_json(
+          message: I18n.t('session.invalid'),
+          status: :unauthorized
+        )
       end
     end
 
@@ -26,11 +29,17 @@ module V1
     end
 
     def token_invalid
-      render_json(message: I18n.t('session.expired'), status_code: :unauthorized)
+      render_json(
+        message: I18n.t('session.expired'),
+        status: :unauthorized
+      )
     end
 
     def invalid_authentication
-      render_json(message: I18n.t('session.invalid'), status_code: :unauthorized)
+      render_json(
+        message: I18n.t('errors.record', model_name: 'User'),
+        status: :unauthorized
+      )
     end
 
     def load_current_user!

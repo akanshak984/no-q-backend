@@ -6,15 +6,22 @@ module V1
 
     def index
       @users = User.all
-      render_json(message: 'All users', data: @users)
+      render_json(
+        message: I18n.t('list', model_name: 'User'),
+        data: @users
+      )
     end
 
     def create
       @user = User.create(sign_up_params)
       if @user.save
-        render_json(message: 'User created successfully', data: @user, status_code: :created)
+        render_json(message: I18n.t('created.success', model_name: 'User'),
+                    data: @user, status: :created)
       else
-        render_json(message: @user.errors.full_messages, status_code: :unprocessable_entity)
+        render_json(
+          message: @user.errors.full_messages,
+          status: :unprocessable_entity
+        )
       end
     end
 
