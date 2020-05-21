@@ -12,9 +12,9 @@ module V1
     def create
       @user = User.create(sign_up_params)
       if @user.save
-        render_json(message: 'User created successfully', data: @user, status_code: :created)
+        render_json(message: 'User created successfully', data: @user, status: :created)
       else
-        render_json(message: 'Failure', data: @user.errors.full_messages, status_code: :unprocessable_entity)
+        render_json(message: 'Failure', data: @user.errors.full_messages, status: :unprocessable_entity)
       end
     end
 
