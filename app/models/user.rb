@@ -6,13 +6,5 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true, length: { in: 4..15 }
 
-  enum roles: { shop_owner: 1 }
-
-  def role
-    User.roles.key(role_id)
-  end
-
-  def shop_owner?
-    role == 'shop_owner'
-  end
+  enum role: { shop_owner: 1 }
 end
