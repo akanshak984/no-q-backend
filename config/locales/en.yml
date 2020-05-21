@@ -33,6 +33,8 @@ en:
   hello: "Hello world"
   session:
     expired: "The session has expired."
+    invalid: "Token is invalid"
+    header_missing: 'Authorization header is missing.'
   login:
     success: "Logged in successfully"
     failure: "Password is wrong!!"
