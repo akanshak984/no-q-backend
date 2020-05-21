@@ -18,8 +18,10 @@ module V1
       end
     end
 
+    private
+
     def sign_up_params
-      params.require(:user).permit(:username, :password, :role_id)
+      params.require(:user).permit(:username, :password, :password_confirmation, :role_id)
     end
   end
 end
