@@ -1,7 +1,9 @@
-class V1::UsersController < V1::BaseController
-  def index
-  end
+# frozen_string_literal: true
 
-  def create
+module V1
+  class UsersController < V1::BaseController
+    def index; end
+
+    def create; end
   end
 end
