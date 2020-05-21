@@ -10,13 +10,13 @@ module V1
       if @user.authenticate(permitted_params[:password])
         token = JsonWebToken.encode(user_id: @user.id)
         render_json(
-          message: I18n.t("login.success"),
+          message: I18n.t('login.success'),
           data: { auth_token: token },
           status: :ok
         )
       else
         render_json(
-          message: I18n.t("login.failure"),
+          message: I18n.t('login.failure'),
           status: :unauthorized
         )
       end
@@ -31,18 +31,21 @@ module V1
     def validate_params
       return true if permitted_params[:username] &&
                      permitted_params[:password]
+
       render_json(
-        message: I18n.t("user.parameters"),
+        message: I18n.t('user.parameters'),
         status: :unauthorized
       )
     end
 
     def find_user
-      @user = User.find_by_username(permitted_params[:username])
+      @user = User.find_by(username: permitted_params[:username])
+      return true if @user
+
       render_json(
-        message: I18n.t("errors.record", model_name: 'User'),
+        message: I18n.t('errors.record', model_name: 'User'),
         status: :unauthorized
-      ) unless @user
+      )
     end
   end
 end
