@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+  session:
+    expired: "The session has expired."
+  login:
+    success: "Logged in successfully"
+    failure: "Password is wrong!!"
+  errors:
+    record: '%{model_name} not found.'
+  user:
+    parameters: 'Username or Password is missing'
