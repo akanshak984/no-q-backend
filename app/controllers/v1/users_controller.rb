@@ -14,7 +14,7 @@ module V1
       if @user.save
         render_json(message: 'User created successfully', data: @user, status_code: :created)
       else
-        render_json(message: 'Failure', data: @user.errors.full_messages, status_code: :unprocessable_entity)
+        render_json(message: @user.errors.full_messages, status_code: :unprocessable_entity)
       end
     end
 
