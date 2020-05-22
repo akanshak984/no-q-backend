@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class StoreSerializer < ActiveModel::Serializer
-  attributes :id, :name, :code, :address, :city, :state,
-             :pincode, :opening_time, :closing_time, :duration, :capacity, :available_days, :deleted_at,
-             :proposed_slots
+  attributes :id, :name, :code, :address, :city, :state, :pincode,
+    :opening_time, :closing_time,
+    :duration, :capacity, :available_days,
+    :deleted_at, :proposed_slots
 
   def opening_time
     object.opening_time.strftime('%H:%M')
