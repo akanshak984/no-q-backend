@@ -15,8 +15,11 @@ module V1
     def create
       @user = User.create(sign_up_params)
       if @user.save
-        render_json(message: I18n.t('created.success', model_name: 'User'),
-                    data: @user, status: :created)
+        render_json(
+          message: I18n.t('created.success', model_name: 'User'),
+          data: serialize_resource(@user),
+          status: :created
+        )
       else
         render_json(
           message: @user.errors.full_messages,
