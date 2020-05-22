@@ -7,7 +7,5 @@ class UserSerializer < ActiveModel::Serializer
     JsonWebToken.encode(user_id: object.id)
   end
 
-  def role
-    object.role
-  end
+  delegate :role, to: :object
 end

@@ -54,7 +54,7 @@ module V1
       ) and return
     end
 
-    def serialize_resource(resource, opts={})
+    def serialize_resource(resource, opts = {})
       ActiveModelSerializers::SerializableResource.new(resource, opts)
     end
   end
