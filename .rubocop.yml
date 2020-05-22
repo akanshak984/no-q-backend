@@ -10,6 +10,9 @@ Metrics/MethodLength:
 Layout/LineLength:
  Max: 150
 
+Lint/MissingCopEnableDirective:
+ Enabled: false
+
 AllCops:
  TargetRubyVersion: 2.7.0
  NewCops: enable
