@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   api_version(:module => "V1", :header => {:name => "Accept", :value => "application/no-q.com; version=1"}) do
     resources :users, only: [:index, :create]
     resources :sessions, only: :create
-    resources :stores do
-      resources :slots, only: [:index, :create]
-    end
+    resources :stores, only: :create
+    resources :slots, only: [:index, :create]
   end
 end

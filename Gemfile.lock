@@ -71,6 +71,8 @@ GEM
       activesupport
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    discard (1.2.0)
+      activerecord (>= 4.2, < 7)
     erubi (1.9.0)
     ffi (1.12.2)
     globalid (0.4.2)
@@ -184,6 +186,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
+  discard (~> 1.2)
   jwt
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
