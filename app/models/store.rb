@@ -31,8 +31,8 @@ class Store < ApplicationRecord
       start_time = Time.at(hour).utc
       step_time = (start_time + duration.minutes)
       time[:sequence] = index + 1
-      time[:from] = start_time.strftime('%H:%M')
-      time[:to] = if step_time <= close_time
+      time[:from_time] = start_time.strftime('%H:%M')
+      time[:to_time] = if step_time <= close_time
                     step_time.strftime('%H:%M')
                   else
                     close_time.strftime('%H:%M')
