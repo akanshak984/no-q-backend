@@ -36,7 +36,7 @@ en:
     header_missing: 'Authorization header is missing.'
   login:
     success: "Logged in successfully"
-    failure: "Password is wrong!!"
+    failure: "Invalid Credentials"
   errors:
     record: '%{model_name} not found.'
   user:
