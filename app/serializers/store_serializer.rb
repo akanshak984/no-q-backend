@@ -2,9 +2,12 @@
 
 class StoreSerializer < ActiveModel::Serializer
   attributes :id, :name, :code, :address, :city, :state, :pincode,
-    :opening_time, :closing_time,
-    :duration, :capacity, :available_days,
-    :deleted_at, :proposed_slots
+             :opening_time, :closing_time,
+             :duration, :capacity, :available_days,
+             :deleted_at, :proposed_slots,
+             :categories
+
+  has_many :categories
 
   def opening_time
     object.opening_time.strftime('%H:%M')

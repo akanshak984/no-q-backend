@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resources :users
     resources :sessions, only: :create
     resources :stores, only: :create
+    resources :categories, only: :index
   end
 end

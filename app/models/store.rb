@@ -12,6 +12,8 @@ class Store < ApplicationRecord
 
   validate :closing_time?
 
+  has_and_belongs_to_many :categories
+
   def closing_time?
     return if closing_time.in_time_zone.strftime('%H:%M') > opening_time.in_time_zone.strftime('%H:%M')
 
@@ -33,10 +35,10 @@ class Store < ApplicationRecord
       time[:sequence] = index + 1
       time[:from_time] = start_time.strftime('%H:%M')
       time[:to_time] = if step_time <= close_time
-                    step_time.strftime('%H:%M')
-                  else
-                    close_time.strftime('%H:%M')
-                  end
+                         step_time.strftime('%H:%M')
+                       else
+                         close_time.strftime('%H:%M')
+                       end
       time_slots << time
     end
     time_slots
