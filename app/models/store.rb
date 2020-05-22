@@ -13,6 +13,8 @@ class Store < ApplicationRecord
 
   validate :closing_time?
 
+  has_and_belongs_to_many :categories
+
   def closing_time?
     return if closing_time.in_time_zone.strftime('%H:%M') > opening_time.in_time_zone.strftime('%H:%M')
 

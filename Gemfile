@@ -16,6 +16,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "versionist"
 gem "active_model_serializers"
 gem 'discard', '~> 1.2'
+gem "rack-cors", require: "rack/cors"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
