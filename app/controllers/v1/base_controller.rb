@@ -53,5 +53,9 @@ module V1
         status: :unauthorized
       ) and return
     end
+
+    def serialize_resource(resource, opts={})
+      ActiveModelSerializers::SerializableResource.new(resource, opts)
+    end
   end
 end
