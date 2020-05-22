@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_182123) do
+ActiveRecord::Schema.define(version: 2020_05_22_174955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "slots", force: :cascade do |t|
+    t.bigint "store_id"
+    t.integer "sequence"
+    t.time "from_time"
+    t.time "to_time"
+    t.boolean "is_active"
+    t.datetime "created_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["store_id"], name: "index_slots_on_store_id"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "code"
+    t.integer "pincode"
+    t.time "opening_time"
+    t.time "closing_time"
+    t.integer "duration"
+    t.integer "capacity"
+    t.bit "available_days", limit: 7
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_stores_on_code", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
