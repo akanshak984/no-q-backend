@@ -19,6 +19,26 @@ class Store < ApplicationRecord
   end
 
   def code
-    rand(36**10).to_s(36)
+    ([*('A'..'Z'), *('0'..'9')] - %w[0 1 I O]).sample(10).join
+  end
+
+  # rubocop:disable Metrics/AbcSize
+  def proposed_slots
+    time_slots = []
+    close_time = Time.at(closing_time).utc
+    (opening_time.to_datetime.to_i..closing_time.to_datetime.to_i).step(duration.minutes).each_with_index do |hour, index|
+      time = {}
+      start_time = Time.at(hour).utc
+      step_time = (start_time + duration.minutes)
+      time[:sequence] = index + 1
+      time[:from] = start_time.strftime('%H:%M')
+      time[:to] = if step_time <= close_time
+                    step_time.strftime('%H:%M')
+                  else
+                    close_time.strftime('%H:%M')
+                  end
+      time_slots << time
+    end
+    time_slots
   end
 end
