@@ -2,64 +2,36 @@
 
 module V1
   class SlotsController < BaseController
-    # to create slots authentication is required
-    skip_before_action :authenticate!, only: [:index]
+    skip_before_action :authenticate!, only: %i[index mark]
 
     def index
-      slots = Slot.all
+      slots = Slot.all # where(is_active: true)
       render_json(
         message: I18n.t('list', model_name: 'Slot'),
-        data: slots
+        data: serialize_resource(slots)
       )
     end
 
-    def create
-      store_id = slot_params[:id]
-      slots = slot_params[:slots]
-      params = { store_id: store_id, slots: slots }
-      create_bulk_params(params)
-
-      if save_record
+    def mark
+      slots = Slot.where(id: permitted_params[:ids])
+      if slots.update(is_active: permitted_params[:is_active])
         render_json(
-          message: I18n.t('created.success', model_name: 'Slot'),
-          data: serialize_resource(@slot), status: :created
+          message: I18n.t('updated.success', model_name: 'Slot'),
+          data: serialize_resource(slots),
+          status: :ok
         )
       else
         render_json(
-          message: @slot.errors.full_messages,
+          message: slots.errors.full_messages,
           status: :unprocessable_entity
         )
       end
     end
 
-    def create_bulk_params(params)
-      store_id = params[:store_id]
-      slots = params[:slots]
-      @params_for_bulk_creation = []
-      slots.each do |slot|
-        current_slot = {}
-        @params_for_bulk_creation << current_slot.merge!(store_id: store_id,
-                                                         sequence: slot['sequence'],
-                                                         from_time: slot['from_time'],
-                                                         to_time: slot['to_time'],
-                                                         is_active: slot['is_active'])
-      end
-    end
-
     private
 
-    def slot_params
-      params.require(:store).permit(:id, slots: %i[sequence
-                                                   from_time to_time is_active])
-    end
-
-    def save_record
-      ActiveRecord::Base.transaction do
-        @slot = Slot.insert_all(
-          @params_for_bulk_creation,
-          returning: %w[id store_id sequence from_time to_time is_active]
-        )
-      end
+    def permitted_params
+      params.require(:slots).permit(:is_active, ids: [])
     end
   end
 end
