@@ -2,7 +2,6 @@
 
 module V1
   class StoresController < V1::BaseController
-    skip_before_action :authenticate!, only: [:create]
 
     def create
       @store = Store.new(permitted_params.except(:category_ids))
