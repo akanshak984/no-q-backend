@@ -43,4 +43,6 @@ en:
     parameters: 'Username or Password is missing'
   created:
     success: '%{model_name} created successfully!'
+  updated:
+    success: '%{model_name} updated successfully!'
   list: '%{model_name} List'

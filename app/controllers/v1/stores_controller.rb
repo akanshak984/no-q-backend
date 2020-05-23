@@ -28,7 +28,7 @@ module V1
 
     def update_categories
       permitted_params[:category_ids].each do |id|
-        category = Category.find_by_id(id)
+        category = Category.find_by(id: id)
         @store.categories << category if category
       end
     end
@@ -36,8 +36,9 @@ module V1
     def save_recod
       ActiveRecord::Base.transaction do
         @store.save &&
-        @store.update(code: @store.code) &&
-        update_categories
+          @store.update(code: @store.code) &&
+          update_categories &&
+          @store.create_slots
       end
     end
   end
