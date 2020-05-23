@@ -30,4 +30,19 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  session:
+    expired: "The session has expired."
+    invalid: "Token is invalid"
+    header_missing: 'Authorization header is missing.'
+  login:
+    success: "Logged in successfully"
+    failure: "Invalid Credentials"
+  errors:
+    record: '%{model_name} not found.'
+  user:
+    parameters: 'Username or Password is missing'
+  created:
+    success: '%{model_name} created successfully!'
+  updated:
+    success: '%{model_name} updated successfully!'
+  list: '%{model_name} List'
