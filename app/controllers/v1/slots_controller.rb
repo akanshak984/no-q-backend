@@ -2,8 +2,6 @@
 
 module V1
   class SlotsController < BaseController
-    skip_before_action :authenticate!, only: %i[index mark]
-
     def index
       slots = Slot.all # where(is_active: true)
       render_json(
