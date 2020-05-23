@@ -4,5 +4,7 @@ class Category < ApplicationRecord
   validates :name, presence: true
   validates :code, presence: true
 
-  has_and_belongs_to_many :stores
+  # TODO: change third table name
+  has_many :categories_stores, dependent: :destroy
+  has_many :stores, through: :categories_stores
 end
