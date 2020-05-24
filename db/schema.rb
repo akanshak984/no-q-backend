@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_075041) do
   end
 
   create_table "stores", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "name"
     t.string "address"
     t.string "city"
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_075041) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["code"], name: "index_stores_on_code", unique: true
+    t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

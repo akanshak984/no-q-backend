@@ -16,6 +16,7 @@ class Store < ApplicationRecord
   has_many :categories_stores, dependent: :destroy
   has_many :categories, through: :categories_stores
   has_many :slots, dependent: :destroy
+  belongs_to :user, optional: true
 
   def closing_time?
     return if closing_time.in_time_zone.strftime('%H:%M') > opening_time.in_time_zone.strftime('%H:%M')

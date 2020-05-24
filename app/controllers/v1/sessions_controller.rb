@@ -9,9 +9,10 @@ module V1
     def create
       if @user.authenticate(permitted_params[:password])
         token = JsonWebToken.encode(user_id: @user.id)
+        store = Store.find_by(user_id: @user.id)
         render_json(
           message: I18n.t('login.success'),
-          data: { auth_token: token },
+          data: { auth_token: token, store_registered: store.present?, store_id: store&.id },
           status: :ok
         )
       else

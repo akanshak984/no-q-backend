@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true, length: { in: 4..15 }
   validates :role_id, presence: true
+  has_one :store, dependent: :destroy
 
   enum roles: { shop_owner: 1 }
 

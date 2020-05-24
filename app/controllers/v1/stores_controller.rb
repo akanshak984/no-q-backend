@@ -2,7 +2,6 @@
 
 module V1
   class StoresController < V1::BaseController
-
     def create
       @store = Store.new(permitted_params.except(:category_ids))
       if save_recod
@@ -35,7 +34,7 @@ module V1
     def save_recod
       ActiveRecord::Base.transaction do
         @store.save &&
-          @store.update(code: @store.code) &&
+          @store.update(code: @store.code, user_id: current_user.id) &&
           update_categories &&
           @store.create_slots
       end
