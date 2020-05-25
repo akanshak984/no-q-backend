@@ -73,6 +73,10 @@ GEM
     crass (1.0.6)
     discard (1.2.0)
       activerecord (>= 4.2, < 7)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     erubi (1.9.0)
     ffi (1.12.2)
     globalid (0.4.2)
@@ -143,6 +147,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rexml (3.2.4)
+    rtesseract (3.1.1)
     rubocop (0.84.0)
       parallel (~> 1.10)
       parser (>= 2.7.0.1)
@@ -189,12 +194,14 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   discard (~> 1.2)
+  dotenv-rails
   jwt
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.1)
+  rtesseract
   rubocop-rails
   tzinfo-data
   versionist

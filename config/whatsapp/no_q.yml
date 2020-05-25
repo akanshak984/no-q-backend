@@ -1,0 +1,27 @@
+no_q:
+  sequence_1:
+    step: 1
+    message_category: "pincode"
+    method_name: EnterPincode
+  sequence_2:
+    step: 2
+    message_category: "categories_under_pincode"
+    method_name: ListCategories
+  sequence_3:
+    step: 3
+    message_category: "shops_under_categories"
+    method_name: ListShops
+  sequence_4:
+    step: 4
+    message_category: "available_slots_under_shops"
+    method_name: ListSlots
+  sequence_5:
+    step: 5
+    message_category: "generate_token"
+    method_name: GenerateToken
+    last: true
+  sequence_6:
+    step: 6
+    message_category: "my_bookings"
+    method_name: ListBookings
+    last: true

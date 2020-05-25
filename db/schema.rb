@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_075041) do
+ActiveRecord::Schema.define(version: 2020_05_24_080741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "store_id"
+    t.string "mode"
+    t.string "token"
+    t.bigint "phone_number"
+    t.datetime "booking_date"
+    t.integer "slot_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -67,6 +78,17 @@ ActiveRecord::Schema.define(version: 2020_05_23_075041) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "whats_app_logs", force: :cascade do |t|
+    t.string "sequence"
+    t.string "status"
+    t.string "error_message"
+    t.bigint "phone_number"
+    t.string "message_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.json "user_input"
   end
 
 end

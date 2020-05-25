@@ -19,11 +19,11 @@ Category.insert_all(
       code: 'MED'
     },
     {
-      name: 'LIQUOR',
+      name: 'Liquor',
       code: 'LIQ'
     },
     {
-      name: 'CLOTHING',
+      name: 'Clothing',
       code: 'CLO'
     },
     {

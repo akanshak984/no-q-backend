@@ -24,7 +24,7 @@ class Store < ApplicationRecord
     errors.add(:base, 'Closing time should be greater than opening_time')
   end
 
-  def code
+  def set_code
     ([*('A'..'Z'), *('0'..'9')] - %w[0 1 I O]).sample(10).join
   end
 

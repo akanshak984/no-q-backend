@@ -46,3 +46,7 @@ en:
   updated:
     success: '%{model_name} updated successfully!'
   list: '%{model_name} List'
+  store_list:
+    pincode_blank: 'Pincode cannot be blank!'
+  whatsapp:
+    initiate: "Hi, Enter your Pincode to search e-token shops near you OR Send MY BOOKINGS to check your today bookings. Happy Shopping 😀!!"
