@@ -37,8 +37,8 @@ module Whatsapp
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       request = Net::HTTP::Post.new(@url)
-      request['apikey'] = '0701a8d8121a449cc4e15c0a315ada9b'
-      request.body = 'channel=whatsapp&source=917834811114&destination=' + @number + '&message=' + @message + '&src.name=TalkTalk'
+      request['apikey'] = '489d73b4836c4f22cf50f728277ac783'
+      request.body = 'channel=whatsapp&source=917834811114&destination=' + @number + '&message=' + @message + '&src.name=ShopTok'
 
       http.request(request)
     end

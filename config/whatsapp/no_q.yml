@@ -19,9 +19,13 @@ no_q:
     step: 5
     message_category: "generate_token"
     method_name: GenerateToken
-    last: true
   sequence_6:
     step: 6
+    message_category: "calculate_bill"
+    method_name: CalculateBill
+    last: true
+  sequence_7:
+    step: 7
     message_category: "my_bookings"
     method_name: ListBookings
     last: true

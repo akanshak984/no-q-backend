@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 module NoQ
   class Initialize
     def initialize(config:, params: {})
@@ -9,10 +8,11 @@ module NoQ
       @message = params['payload']['payload']['text']
       @message_type = params['payload']['type']
       @user_name = params['payload']['sender']['name']
+      @image_path = params['payload']['payload']['url']
 
       # TO TEST
       # @number = '918600160602'
-      # @message = 'XZN'
+      # @message = 'rice dal'
       # @message_type = 'text'
     end
 
@@ -32,7 +32,7 @@ module NoQ
 
     def calculate_step
       if @message == 'MY BOOKINGS'
-        @sequence = @config.send('sequence_6')
+        @sequence = @config.send('sequence_7')
       elsif @last.present?
         @next = @last.first.to_i + 1
         next_sequence = "sequence_#{@next}"
@@ -66,7 +66,8 @@ module NoQ
       when 'categories_under_pincode',
            'shops_under_categories',
            'available_slots_under_shops',
-           'generate_token', 'my_bookings'
+           'generate_token', 'my_bookings',
+           'calculate_bill'
         @obj =
           clazz.new(
             sequence: @sequence,
