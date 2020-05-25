@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   api_version(:module => "V1", :header => {:name => "Accept", :value => "application/no-q.com; version=1"}) do
     resources :users, only: [:index, :create]
     resources :sessions, only: :create
-    resources :stores, only: :create
+    resources :stores, only: [:create, :index]
     resources :slots, only: [:index] do
       collection do
         post :mark
@@ -11,4 +11,5 @@ Rails.application.routes.draw do
     end
     resources :categories, only: :index
   end
+  post '/receive', to: 'whatsapp#receive'
 end
