@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Store < ApplicationRecord
+  include Discard::Model
+
   validates :pincode, presence: true
   validates :address, presence: true
   validates :name, presence: true
@@ -17,6 +19,11 @@ class Store < ApplicationRecord
   has_many :categories, through: :categories_stores
   has_many :slots, dependent: :destroy
   belongs_to :user, optional: true
+
+  self.discard_column = :deleted_at
+
+  default_scope -> { kept }
+
 
   def closing_time?
     return if closing_time.in_time_zone.strftime('%H:%M') > opening_time.in_time_zone.strftime('%H:%M')

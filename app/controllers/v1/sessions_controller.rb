@@ -12,7 +12,7 @@ module V1
         store = Store.find_by(user_id: @user.id)
         render_json(
           message: I18n.t('login.success'),
-          data: { auth_token: token, store_registered: store.present?, store_id: store&.id },
+          data: { auth_token: token, store_registered: store.present?, store_id: store&.id, is_admin: @user.is_admin? },
           status: :ok
         )
       else
