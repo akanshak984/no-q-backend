@@ -7,7 +7,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Category.destroy_all
+# Category.destroy_all
 Category.insert_all(
   [
     {
@@ -33,6 +33,35 @@ Category.insert_all(
     {
       name: 'Electronics',
       code: 'ELEC'
+    }
+  ]
+)
+
+Item.insert_all(
+  [
+    {
+      name: 'rice',
+      price: 20
+    },
+    {
+      name: 'toothpaste',
+      price: 80
+    },
+    {
+      name: 'sanitizer',
+      price: 120
+    },
+    {
+      name: 'salt',
+      price: 14
+    },
+    {
+      name: 'dal',
+      price: 50
+    },
+    {
+      name: 'wheat',
+      price: 120
     }
   ]
 )

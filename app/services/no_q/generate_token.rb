@@ -46,7 +46,7 @@ module NoQ
       slot = @booking.slot
       @msg = "Booking Details:\n\n"
       @msg +=
-        "eToken: #{@booking.token}\n#{@booking.store.name} (#{@booking.store.address})\nDate: #{@booking.booking_date.to_date.to_s(:long_ordinal)}\nTime Slot: #{slot.from_time.in_time_zone.strftime('%H:%M')} - #{slot.to_time.in_time_zone.strftime('%H:%M')}"
+        "eToken: #{@booking.token}\n#{@booking.store.name} (#{@booking.store.address})\nDate: #{@booking.booking_date.to_date.to_s(:long_ordinal)}\nTime Slot: #{slot.from_time.in_time_zone.strftime('%H:%M')} - #{slot.to_time.in_time_zone.strftime('%H:%M')}\nList your items"
     end
 
     def set_message
@@ -55,8 +55,8 @@ module NoQ
         message: @msg,
         sequence: @step,
         user_input: {
-          key: 'slot_id',
-          value: @slot_id.join(',')
+          key: 'booking_id',
+          value: @booking.id
         }
       }
     end
