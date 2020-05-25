@@ -44,15 +44,6 @@ module V1
       end
     end
 
-    def list
-      @store = Store.where(user_id: current_user.id).first
-      render_json(
-          message: I18n.t('created.success', model_name: 'Store'),
-          data: serialize_resource(@store),
-          status: :ok
-        )
-    end
-
     private
 
     def permitted_params
