@@ -1,24 +1,19 @@
-# README
+# No-Q Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Prerequisites
+- Ruby 2.7.0
+- Rails 6.0.3
+- Postgres 10 and above
 
-Things you may want to cover:
+##### Create and setup the database
+Run the following commands to setup the database.
+ ```ruby
+ bundle exec rake db:setup
+ ```
 
-* Ruby version
+##### Start the Rails server
+ You can start the rails server using the command given below.
+ ```ruby
+ bundle exec rails s
+ ```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
